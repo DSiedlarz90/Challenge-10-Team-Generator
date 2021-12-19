@@ -1,10 +1,6 @@
 //global variables/imports
 const inquirer = require('inquirer');
 const fs = require('fs');
-const EmployeeCard = require('./lib/Employee.js');
-const EngineerCard = require('./lib/Engineer.js');
-const InternCard = require('./lib/Intern.js');
-const ManagerCard = require('./lib/manager.js')
 
 //empty team member array
 const teamMember = [];
@@ -147,7 +143,7 @@ const engineer = [
     {
         type: 'input',
         name: 'email',
-        message: "What is the engineerr's email? (Required)",
+        message: "What is the engineer's email? (Required)",
         validate: emailInput => {
             if (emailInput) {
                 return true;
@@ -282,7 +278,6 @@ function newMember(addMember) {
                 }
             });   
         } else {
-            console.log(teamMember, teamMember.length)
             getCardHtml(teamMember);
         }
     });
@@ -320,7 +315,6 @@ function getCardHtml(teamMember) {
             </ul>
         </div > `;
     }
-    console.log(htmlCards)
     writeHtml(htmlCards);
 }
 
@@ -372,7 +366,7 @@ function writeHtml(htmlCards) {
         </div>
     </body>
 </html>`;
-fs.writeFile('newfile.html', index, function (err) {
+fs.writeFile('./dist/index.html', index, function (err) {
     if (err) throw err;
     console.log('File is created successfully.');
 });        
